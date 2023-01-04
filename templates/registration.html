@@ -8,14 +8,26 @@
 </head>
 <body>
     <center>
-        <h1>registration form</h1>
-        <form method="POST">
-            {% csrf_token %}
+        {% extends 'dummy.html' %}
 
-                {{uf.as_p}}
-                {{pf.as_p}}
-            <input type="submit" value="register">
-        </form>
+
+{% block title %}
+    <title>registration Page</title>
+
+{% endblock %}
+
+
+{% block body_block %}
+    <h1>registration form</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+            {{uf.as_p}}
+            {{pf.as_p}}
+        <input type="submit" value="register">
+    </form>
+{% endblock %}
+        
     </center>
 </body>
 </html>
