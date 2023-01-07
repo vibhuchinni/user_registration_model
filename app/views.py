@@ -61,3 +61,11 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('home'))
+
+@login_required
+def profile_info(request):
+    username=request.session.get('username')
+    USD=User.objects.get(username=username)
+    PFD=Profile.objects.get(user=USD)
+    d={'USD':USD,'PFD':PFD}
+    return render(request,'profile_info.html',d)
